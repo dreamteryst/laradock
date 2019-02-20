@@ -1,6 +1,6 @@
 {
-	"authHost": "localhost",
-	"authEndpoint": "/broadcasting/auth",
+	"authHost": "mcop.test",
+	"authEndpoint": "/api/broadcasting/auth",
 	"clients": [],
 	"database": "redis",
 	"databaseConfig": {

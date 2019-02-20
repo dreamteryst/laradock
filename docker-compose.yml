@@ -240,8 +240,10 @@ services:
       depends_on:
         - php-fpm
       networks:
-        - frontend
-        - backend
+        frontend:
+        backend:
+          aliases:
+            - mcop.test
 
 ### Blackfire ########################################
     blackfire:
