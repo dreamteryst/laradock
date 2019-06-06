@@ -361,9 +361,9 @@ services:
 ### MariaDB ##############################################
     mariadb:
       build: ./mariadb
-      volumes:
-        - ${DATA_PATH_HOST}/mariadb:/var/lib/mysql
-        - ${MARIADB_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
+      #volumes:
+        #- ${DATA_PATH_HOST}/mariadb:/var/lib/mysql
+        #- ${MARIADB_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
       ports:
         - "${MARIADB_PORT}:3306"
       environment:
