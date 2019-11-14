@@ -2,3 +2,5 @@
 !.gitignore
 !default.conf
 !mcop.conf
+!mcop_member.conf
+!mcop_web.conf

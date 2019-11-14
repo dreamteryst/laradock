@@ -10,6 +10,14 @@ if [ ! -f /etc/nginx/ssl/mcop.test.crt ]; then
     openssl req -new -x509 -newkey rsa:2048 -sha256 -nodes -subj "/C=TH/ST=Muang/L=KhonKaen/O=I2F/CN=mcop.test" -keyout "/etc/nginx/ssl/mcop.test.key" -days 365 -out "/etc/nginx/ssl/mcop.test.crt"
 fi
 
+if [ ! -f /etc/nginx/ssl/mcop_member.test.crt ]; then
+    openssl req -new -x509 -newkey rsa:2048 -sha256 -nodes -subj "/C=TH/ST=Muang/L=KhonKaen/O=I2F/CN=mcop_member.test" -keyout "/etc/nginx/ssl/mcop_member.test.key" -days 365 -out "/etc/nginx/ssl/mcop_member.test.crt"
+fi
+
+if [ ! -f /etc/nginx/ssl/mcop_web.test.crt ]; then
+    openssl req -new -x509 -newkey rsa:2048 -sha256 -nodes -subj "/C=TH/ST=Muang/L=KhonKaen/O=I2F/CN=mcop_web.test" -keyout "/etc/nginx/ssl/mcop_web.test.key" -days 365 -out "/etc/nginx/ssl/mcop_web.test.crt"
+fi
+
 # Start crond in background
 crond -l 2 -b
 
