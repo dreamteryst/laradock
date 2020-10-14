@@ -56,7 +56,8 @@ RUN if [ ${INSTALL_BZ2} = true ]; then \
 #Install GD package:
 ARG INSTALL_GD=false
 RUN if [ ${INSTALL_GD} = true ]; then \
-   apk add --update --no-cache libpng-dev; \
+   apk add --update --no-cache freetype-dev libjpeg-turbo-dev jpeg-dev libpng-dev; \
+   docker-php-ext-configure gd --with-freetype-dir=/usr/lib/ --with-jpeg-dir=/usr/lib/ --with-png-dir=/usr/lib/ && \
    docker-php-ext-install gd \
 ;fi
 
@@ -66,6 +67,16 @@ RUN if [ ${INSTALL_GMP} = true ]; then \
    apk add --update --no-cache gmp gmp-dev; \
    docker-php-ext-install gmp \
 ;fi
+
+#Install ImageMagick package:
+ARG INSTALL_IMAGEMAGICK=false
+RUN set -eux; \
+  if [ ${INSTALL_IMAGEMAGICK} = true ]; then \
+    apk add --update --no-cache imagemagick-dev; \
+    pecl install imagick; \
+    docker-php-ext-enable imagick; \
+    php -m | grep -q 'imagick'; \
+  fi
 
 #Install BCMath package:
 ARG INSTALL_BCMATH=false
